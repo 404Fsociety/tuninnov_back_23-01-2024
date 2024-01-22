@@ -85,7 +85,7 @@ const generateVCFContent = (userData) => {
     vcfString += "VERSION:3.0\r\n";
 
     vcfString += `N:${userData.lastname || ''};${userData.firstname || ''};;${userData.prefix || ''};${userData.suffix || ''}\r\n`;
-    vcfString += `FN:${userData.prefix || ''}${userData.firstname}${userData.suffix || ''}${userData.lastname}\r\n`;
+    vcfString += `FN:${userData.lastname};${userData.prefix || ''};${userData.firstname} ${userData.suffix || ''}\r\n`;
     vcfString += `NICKNAME:${userData.nickname || ''}\r\n`;
     const base64Image = userData.photo.replace(/^data:image\/(png|jpeg);base64,/, '');
     vcfString += `PHOTO:${base64Image}\r\n`;
@@ -116,7 +116,7 @@ const generateVCFContent = (userData) => {
     vcfString += `X-SOCIALPROFILE;TYPE=linkedin:${userData.social_linkedin || ''}\r\n`;
     vcfString += `X-SOCIALPROFILE;TYPE=instagram:${userData.social_instagram || ''}\r\n`;
     vcfString += `X-SOCIALPROFILE;TYPE=X-OTHER:${userData.social_other || ''}\r\n`;
-    vcfString += `NOTE:${userData.notes || ''}\r\n`;
+    vcfString += "NOTE:powered by Tuninnov\r\n"; 
     vcfString += "END:VCARD\r\n";
 
     return vcfString;
