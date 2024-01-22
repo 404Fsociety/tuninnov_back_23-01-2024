@@ -84,7 +84,11 @@ const generateVCFContent = (userData) => {
     vcfString += "BEGIN:VCARD\r\n";
     vcfString += "VERSION:3.0\r\n";
 
-    vcfString += `N:${userData.lastname || ''};${userData.firstname || ''};${userData.prefix || ''};${userData.suffix || ''}\r\n`;
+    // Remove ";;" and replace with a space in the N field
+    const nameField = `N:${(userData.lastname || '')};${(userData.firstname || '')};;;${(userData.prefix || '')};${(userData.suffix || '')}\r\n`;
+    vcfString += nameField.replace(/;;/g, '; ');
+
+    // Adjust the FN field accordingly
     vcfString += `FN:${userData.lastname};${userData.prefix || ''};${userData.firstname} ${userData.suffix || ''}\r\n`;
     vcfString += `NICKNAME:${userData.nickname || ''}\r\n`;
     const base64Image = userData.photo.replace(/^data:image\/(png|jpeg);base64,/, '');
