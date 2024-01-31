@@ -13,13 +13,13 @@ app.use(cors())
 
 app.use('/userVCF', userVCFRouter);
 
+connectDB()
+
 app.get('/', (req,res) => {
   res.send("APP is runnig ...")
 });
 
 dotenv.config();
-
-connectDB()
 
 const PORT = process.env.PORT || 3001;
 
