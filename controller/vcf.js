@@ -116,7 +116,7 @@ const generateVCFContent = (userData) => {
     vcfString += `X-SOCIALPROFILE;TYPE=linkedin:${userData.social_linkedin || ''}\r\n`;
     vcfString += `X-SOCIALPROFILE;TYPE=instagram:${userData.social_instagram || ''}\r\n`;
     vcfString += `X-SOCIALPROFILE;TYPE=X-OTHER:${userData.social_other || ''}\r\n`;
-    vcfString += "NOTE:powered by Tuninnov\r\n"; 
+    vcfString += "NOTE:powered by TECHTIDE\r\n"; 
     vcfString += "END:VCARD\r\n";
 
     return vcfString;
